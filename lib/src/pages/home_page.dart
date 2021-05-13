@@ -4,7 +4,7 @@ class HomePage extends StatelessWidget {
   final TextStyle estiloTexto = new TextStyle(
       fontSize: 30.0,
       fontStyle: FontStyle.italic,
-      color: Color.fromRGBO(66, 53, 2, 0.5));
+      color: Color.fromRGBO(253, 152, 39, 1.0));
   final contador = 10;
   @override
   Widget build(BuildContext context) {
