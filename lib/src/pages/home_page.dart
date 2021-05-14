@@ -1,5 +1,6 @@
 import 'package:contador_app/src/providers/menu_provider.dart';
 import 'package:flutter/material.dart';
+import '../utils/icono_string_utils.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -19,26 +20,26 @@ class HomePage extends StatelessWidget {
       initialData: [],
       builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
         return ListView(
-          children: _listaItems(snapshot.data),
+          children: _listaItems(snapshot.data, context),
         );
       },
     );
   }
 
-  List<Widget> _listaItems(List<dynamic> data) {
+  List<Widget> _listaItems(List<dynamic> data, BuildContext context) {
     print(data);
-    List<ListTile> lista = new List();
+    List<ListTile> lista = [];
     data.forEach((element) => {
           lista.add(ListTile(
-            leading: Icon(
-              Icons.account_circle,
-              color: Colors.blue,
-            ),
+            leading: getIcon(element['icon']),
             title: Text(element['texto']),
             trailing: Icon(
               Icons.keyboard_arrow_right,
               color: Colors.blue,
             ),
+            onTap: () {
+              Navigator.pushNamed(context, element['ruta']);
+            },
           ))
         });
 
