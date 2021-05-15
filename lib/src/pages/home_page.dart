@@ -27,7 +27,6 @@ class HomePage extends StatelessWidget {
   }
 
   List<Widget> _listaItems(List<dynamic> data, BuildContext context) {
-    print(data);
     List<ListTile> lista = [];
     data.forEach((element) => {
           lista.add(ListTile(

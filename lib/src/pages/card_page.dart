@@ -13,6 +13,19 @@ class CardPage extends StatelessWidget {
           _cardTipo1(),
           SizedBox(height: 30.0),
           _cardTipo2(),
+          SizedBox(height: 30.0),
+          _cardTipo1(),
+          SizedBox(height: 30.0),
+          _cardTipo2(),
+          SizedBox(height: 30.0),
+          _cardTipo1(),
+          SizedBox(height: 30.0),
+          _cardTipo2(),
+          SizedBox(height: 30.0),
+          _cardTipo1(),
+          SizedBox(height: 30.0),
+          _cardTipo2(),
+          SizedBox(height: 30.0),
         ],
       ),
     );
@@ -52,6 +65,9 @@ class CardPage extends StatelessWidget {
           ],
         )
       ]),
+      elevation: 10.0,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20.0))),
     );
   }
 
@@ -72,6 +88,10 @@ class CardPage extends StatelessWidget {
           )
         ],
       ),
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20.0))),
+      elevation: 10.0,
     );
   }
 }
