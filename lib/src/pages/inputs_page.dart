@@ -11,6 +11,13 @@ class _InputsPageState extends State<InputsPage> {
   String _password = '';
   String _fecha = '';
   bool _visiblePassword = false;
+  String _opcionSeleccionada = 'Volar';
+  List _opcionesPoderes = [
+    'Volar',
+    'Super Fuerza',
+    'Teletransportación',
+    'Telequinesis'
+  ];
   TextEditingController _inputControllerFecha = new TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -28,6 +35,8 @@ class _InputsPageState extends State<InputsPage> {
           _crearPasswordInput(),
           Divider(),
           _crearFechaInput(),
+          Divider(),
+          _crearDropdown(),
           Divider(),
           _crearPersona()
         ],
@@ -142,10 +151,43 @@ class _InputsPageState extends State<InputsPage> {
         : Icon(Icons.visibility);
   }
 
+  List<DropdownMenuItem> _getDropDownMenuItems() {
+    List<DropdownMenuItem> list = [];
+    _opcionesPoderes.forEach((poder) {
+      list.add(DropdownMenuItem(
+        child: Text(poder),
+        value: poder,
+      ));
+    });
+    return list;
+  }
+
+  Widget _crearDropdown() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(Icons.list),
+        SizedBox(
+          width: 40.0,
+        ),
+        DropdownButton(
+          items: _getDropDownMenuItems(),
+          value: _opcionSeleccionada,
+          onChanged: (opc) {
+            setState(() {
+              _opcionSeleccionada = opc;
+            });
+          },
+        )
+      ],
+    );
+  }
+
   Widget _crearPersona() {
     return ListTile(
       title: Text('Su nombre es $_nombre'),
       subtitle: Text('Su correo es $_email'),
+      trailing: Text('Poder: $_opcionSeleccionada'),
     );
   }
 }
