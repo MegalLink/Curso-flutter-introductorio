@@ -7,15 +7,7 @@ class AvatarPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Avatars'),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.home,
-          color: Colors.blue,
-        ),
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
+    
     );
   }
 }
