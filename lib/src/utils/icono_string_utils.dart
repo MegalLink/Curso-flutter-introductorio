@@ -6,7 +6,8 @@ final _icons = <String, IconData>{
   'folder_open': Icons.folder_open,
   'list': Icons.list,
   'counter': Icons.lock_clock,
-  'input': Icons.input
+  'input': Icons.input,
+  'infinite-scroll': Icons.autorenew,
 };
 Icon getIcon(String nombre) {
   return Icon(
