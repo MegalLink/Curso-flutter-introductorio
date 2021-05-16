@@ -18,6 +18,8 @@ class _InputsPageState extends State<InputsPage> {
     'Teletransportación',
     'Telequinesis'
   ];
+  double _valorSlider = 25.0;
+  bool _mayorEdad = false;
   TextEditingController _inputControllerFecha = new TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,13 @@ class _InputsPageState extends State<InputsPage> {
           Divider(),
           _crearDropdown(),
           Divider(),
-          _crearPersona()
+          _crearSlider(),
+          Divider(),
+          _crearCheckBox(),
+          Divider(),
+          _crearSwtich(),
+          Divider(),
+          _crearPersona(),
         ],
       ),
     );
@@ -185,9 +193,45 @@ class _InputsPageState extends State<InputsPage> {
 
   Widget _crearPersona() {
     return ListTile(
-      title: Text('Su nombre es $_nombre'),
+      title: Text('Su nombre es $_nombre  Edad: ${_valorSlider.toInt()}'),
       subtitle: Text('Su correo es $_email'),
       trailing: Text('Poder: $_opcionSeleccionada'),
     );
+  }
+
+  Widget _crearCheckBox() {
+    return CheckboxListTile(
+        title: Text('Eres mayor de edad?'),
+        value: _mayorEdad,
+        onChanged: (valor) {
+          setState(() {
+            _mayorEdad = valor;
+          });
+        });
+  }
+
+  Widget _crearSwtich() {
+    return SwitchListTile(
+        title: Text('Eres mayor de edad?'),
+        value: _mayorEdad,
+        onChanged: (valor) {
+          setState(() {
+            _mayorEdad = valor;
+          });
+        });
+  }
+
+  Widget _crearSlider() {
+    return Slider(
+        min: 18.0,
+        max: 100.0,
+        value: _valorSlider,
+        onChanged: !_mayorEdad
+            ? null
+            : (valor) {
+                setState(() {
+                  _valorSlider = valor.ceil().toDouble();
+                });
+              });
   }
 }
